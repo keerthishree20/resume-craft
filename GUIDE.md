@@ -40,7 +40,7 @@ cp .env.example .env         # add your GEMINI_API_KEY
 npm run dev                  # http://localhost:3000
 ```
 
-`GEMINI_API_KEY` is the only variable the code reads.
+`GEMINI_API_KEY` is required. `GEMINI_MODEL` is optional and defaults to `gemini-3.6-flash`.
 
 ---
 
@@ -57,7 +57,7 @@ npm run dev                  # http://localhost:3000
    interview-prep, outreach, parse-resume
          │ prompt, JSON back
          ▼
-  Google Gemini  gemini-2.0-flash   (src/lib/gemini.ts)
+  Google Gemini  GEMINI_MODEL, default gemini-3.6-flash   (src/lib/gemini.ts)
 ```
 
 There is no database and no login. Each API route builds a prompt, sends it to Gemini, and returns
@@ -118,7 +118,7 @@ else, the route returns an error.
 
 | file | purpose |
 |---|---|
-| `src/lib/gemini.ts` | creates the client and exports `model`, set to `gemini-2.0-flash` |
+| `src/lib/gemini.ts` | creates the client and exports `model`, from `GEMINI_MODEL`, default `gemini-3.6-flash` |
 | `src/lib/storage.ts` | `getProfile`, `saveProfile`, `hasProfile`, `getJDHistory`, `saveJD` |
 | `src/lib/types.ts` | the profile, result and history types |
 | `src/components/templates/` | `ClassicTemplate`, `ModernTemplate`, `MinimalTemplate` as React components |
@@ -127,7 +127,7 @@ else, the route returns an error.
 | `src/components/EditableText.tsx` | inline editing of generated text before printing, used by the Classic template |
 | `src/components/ProfileCompleteness.tsx` | how much of the profile is filled in |
 
-To change the model, edit the one line in `src/lib/gemini.ts`.
+To change the model, set `GEMINI_MODEL` in `.env`.
 
 ---
 
@@ -165,7 +165,13 @@ They do no harm at runtime but make installs larger. Remove them with `npm unins
 ## Troubleshooting
 
 ### Every AI feature fails with a server error
-`GEMINI_API_KEY` is missing from `.env`, or invalid. Restart `npm run dev` after changing it.
+Check the terminal running `npm run dev`:
+- "API key not valid" means `GEMINI_API_KEY` in `.env` is wrong or revoked. Create a new one at
+  https://aistudio.google.com/apikey.
+- "is no longer available" or a 404 means Google retired the model. Set `GEMINI_MODEL` to a current
+  one.
+
+Restart `npm run dev` after changing `.env`.
 
 ### "Please paste your resume content"
 `/api/parse-resume` needs at least 20 characters of resume text.

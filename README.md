@@ -28,7 +28,7 @@ choose "Save as PDF".
 ## Tech stack
 
 - **Framework** — Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS
-- **AI** — Google Gemini (`gemini-2.0-flash` via `@google/generative-ai`), called only from server-side API routes
+- **AI** — Google Gemini via `@google/generative-ai`, called only from server-side API routes. The model is `GEMINI_MODEL`, default `gemini-3.6-flash`
 - **Storage** — the browser's `localStorage` (profile and job description history)
 - **PDF** — the browser's print-to-PDF
 - **Charts** — a hand-built SVG radar chart
@@ -47,9 +47,12 @@ Open <http://localhost:3000>.
 
 ```
 GEMINI_API_KEY=       # Google AI Studio API key
+GEMINI_MODEL=gemini-3.6-flash   # optional; change it when Google retires the model
 ```
 
-That is the only variable the app reads.
+Until 2026-09-18 the model was hardcoded to `gemini-2.0-flash`, which Google
+retired, so every AI feature failed. With `gemini-3.6-flash`, resume import was
+checked against the live API on that date.
 
 ## Project structure
 
