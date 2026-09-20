@@ -1,5 +1,7 @@
 # ResumeCraft
 
+[![build](https://github.com/keerthishree20/resume-craft/actions/workflows/build.yml/badge.svg)](https://github.com/keerthishree20/resume-craft/actions/workflows/build.yml)
+
 AI-powered resume toolkit that turns a single profile into tailored resumes, and
 then tells you where that resume falls short for a specific job.
 
