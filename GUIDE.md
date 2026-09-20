@@ -54,7 +54,7 @@ existing resume and let the AI fill it), then for any job description it can:
 Resumes render in three templates (Classic, Modern, Minimal) and are saved as PDF through the browser's
 print dialog.
 
-**Status:** works locally. Not deployed. No automated tests. The Gemini key in the local `.env` was
+**Status:** works locally. Not deployed. No automated tests, though CI does check that it builds. The Gemini key in the local `.env` was
 found to be invalid on 2026-09-18 — you need a fresh key (see [Troubleshooting](#24-troubleshooting)).
 
 ---
