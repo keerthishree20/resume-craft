@@ -5,6 +5,7 @@ and the reason behind it, with the real code. It is self-contained: you can past
 and ask questions about the project without sharing the repository.
 
 **Repository:** https://github.com/keerthishree20/resume-craft
+**All projects:** https://github.com/keerthishree20
 
 ---
 
